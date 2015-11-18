@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Что такое Node.js?</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<base href="node_modules/shower-ribbon/" />
+	<link rel="stylesheet" href="styles/screen.css">
+	<style>
+		.slide.cover.titleslide {
+			color: white !important;
+			background: #333333 url(/images/node-logo-shadow.png) center center no-repeat;
+		}
+		.titleslide h2 {
+			color: #80BD01;
+		}
+		.titleslide .about {
+			text-align: left;
+			margin-top: 300px;
+		}
+		.full .slide:not(.cover):not(.shout):before,
+		.full .slide.cover.titleslide:before {
+			content: "";
+			display: block;
+			width: 100px;
+			height: 125px;
+			position: absolute;
+			right: 10px;
+			bottom: 15px;
+			background: url(../../images/logo.jpg) no-repeat;
+			background-size: cover;
+		}
+		mark.important{
+			background:#C00;
+			color:#FFF
+		}
+		.about {
+			text-align: right;
+			clear: both;
+		}
+		.qr {
+			float: right;
+		}
+		.battery {
+			width: 300px;
+			height: 100px;
+			margin: 0 auto;
+			border: 5px solid black;
+			position: relative;
+			display: flex;
+			justify-content: center;
+		}
+		.battery:before {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 15px;
+			height: 33px;
+			background: black;
+			right: -18px;
+			top: 30px;
+		}
+		.battery>.progress {
+			width: 0;
+			background: rgba(0, 128, 0, 0.17);
+			height: 100%;
+		}
+		.battery.charging:after {
+			content: "⚡";
+			display: block;
+			font-size: 50px;
+		}
+		#demo-gum iframe {
+			width: 100%;
+			height: 100%;
+		}
+		#demo-fileapi img {
+			max-width: 45%;
+		}
+		#demo-fileapi p {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		.video {
+			width: 320px;
+			height: 240px;
+			position: absolute;
+			display: none;
+		}
+		.full .video {
+			display: block;
+		}
+		video#local {
+			left: 10px;
+			top: 10px;
+		}
+		video#remote {
+			right: 10px;
+			bottom: 10px;
+		}
+	</style>
+</head>
+<body class="list">
+
+	<video id="local" class="video" autoplay muted></video>
+	<video id="remote" class="video" autoplay muted></video>
+	<!--
+		Debug class on <body> enables
+		cyan grid on slides
+		-->
+	<header class="caption">
+		<h1>Что такое Node.js?</h1>
+		<p><a href="mailto:oleg@elifantiev.ru">Олег Елифантьев</a></p>
+	</header>
+
+	<section class="slide cover titleslide"><div>
+		<h2>Что такое Node.js?</h2>
+		<p class="about">Kostroma Backend Meetup #0<br />Олег Елифантьев, @oelifantiev</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Олег Елифантьев</h2>
+		<p>Компания Тензор, г. Ярославль<br />
+		Веб-разработчик (JavaScript, Node.JS)<br />
+		Организатор <a href="http://yarfrontend.ru/">Yaroslavl Frontend Meetup</a> (http://yarfrontend.ru)<br />
+		<a href="https://twitter.com/oelifantiev">@oelifantiev</a>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Проблема&hellip;</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Проблема</h2>
+		<p>Хочется писать сложные масштабируемые с конкуретностью и многозадачностью</p>
+		<p>Хочется делать это легко и не хочется много учить.</p>
+		<p class="note">&copy; Алексей Гуськов</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Другие языки?</h2>
+		<ul>
+			<li class="next">С/C++?</li>
+			<li class="next">Java?</li>
+			<li class="next">C#?</li>
+			<li class="next">Python? Ruby?</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Node.js</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Node.js</h2>
+		<p>Май 2009 г.</p>
+		<ul>
+			<li class="next">JavaScript runtime</li>
+			<li class="next">Google V8 под-капотом</li>
+			<li class="next">Event driven, non-blocking I/O</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript?!?</h2>
+		<ul>
+			<li class="next">Низкий порог входа</li>
+			<li class="next">Хорошая скорость работы</li>
+			<li class="next">Элементы ФП &mdash; функции высших порядков</li>
+			<li class="next">"Изоморфность"<sup>*</sup></li>
+		</ul>
+		<p class="next note"><sup>*</sup> &mdash; не путать с изоморфизмом!</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Node.js + NPM = ♥</h2>
+		<p>Богатая экосистема.</p>
+		<p>NPM &mdash; 200К+ пакетов на любой вкус</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Open source</h2>
+		<p>Открытый проект с открытым управлением. Все решения открыты и обсуждаются с сообществом.</p>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Возможности</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>ES6<sup>*</sup> Runtime</h2>
+		<ul>
+			<li class="next">let, const</li>
+			<li class="next">Classes</li>
+			<li class="next">(Weak)Map|Set</li>
+			<li class="next">Promises</li>
+			<li class="next">Spread operator<sup>**</sup>, Arrow functions, Template strings</li>
+		</ul>
+		<p class="note"><sup>*</sup> &mdash; почти&hellip;<br /><sup>**</sup> &mdash; Node 5.x+</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>ES6 Runtime</h2>
+		<p>Некоторые возможности убраны за флаги <br /><code>--es_staging</code> и <code>--harmony-*</code></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Модули "из коробки"</h2>
+		<ul>
+			<li class="next">FS &mdash; работа с файловой системой</li>
+			<li class="next">Socket, TLS/SSL, UDP &mdash; низкоуровневая работа с сетью</li>
+			<li class="next">HTTP(S) &mdash; веб-сервер из 5 строк кода</li>
+			<li class="next">Zlib &mdash; алгоритмы компрессии/декомпрессии</li>
+			<li class="next">Streams &mdash; потоковая обработка данных</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Отладка с помощью "Chrome DevTools"</h2>
+		<ul>
+			<li class="next">Полноценная отладка с watch, bp, conditional bp</li>
+			<li class="next">Heap snaphot, live allocation tracking</li>
+			<li class="next">Мониторинг сетевых запросов</li>
+			<li class="next">Профилирование</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Архитектура</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Apache + PHP, например</h2>
+		<ul>
+			<li class="next">Один запрос &mdash; один поток</li>
+			<li class="next">Пока, например, ждем долгого запроса БД &mdash; поток занят</li>
+			<li class="next">Новый запрос запустит новый поток</li>
+			<li class="next">Если кончились свободные все потоки &mdash; новый запрос будет ждать</li>
+			<li class="next">Даже если ему требуется всего лишь 1мс на обработку&hellip;</li>
+		</ul>
+	</div></section>
+
+	<section class="slide">
+		<div>
+			<h2>Node.js</h2>
+			<ul>
+				<li class="next">Все запросы обрабатываются одним потоком</li>
+				<li class="next">Если мы ушли в долгий внешний запрос (к БД, например) &mdash; поток свободен
+					для приема и обработки других запросов</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Google V8 + libuv</h2>
+			<div style="display: flex; flex-direction: row; justify-content: space-around">
+				<img src="/images/v8-logo.png" alt="Google V8" width="300px" height="300px"/>
+				<img src="/images/libuv-logo.png" alt="libuv logo" width="300px" height="300px" />
+			</div>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Google V8</h2>
+		<ul>
+			<li class="next">Преобразует JS в код "практически в asm"</li>
+			<li class="next">JIT-компиляция</li>
+			<li class="next">Оптимизатор "Crankshaft"</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>libuv</h2>
+		<img src="/images/architecture.png" width="100%" />
+	</div></section>
+
+	<!-- КОЛБЭКИ В JS на птичках и рыбках. -->
+
+	<!-- EventLoop. Какая-то крутая демка... -->
+
+	<section class="slide shout"><div>
+		<h2>Что такое хорошо, а что такое плохо.</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Не блокируйте процесс!</h2>
+		<p>GET /?n=1000000</p>
+		<pre><code>server.on('request', function(req, res) {
+	res.writeHead(200);
+	res.end(fibonacci(req.params.n));
+});</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Долгие операции должны быть асинхронными!</h2>
+		<pre><code>server.on('request', function(req, res) {
+	fibonacci(req.params.n, function(err, result) {
+		// ...
+	});
+});</code></pre>
+		<p>Для "асинхронного разрыва" используйте <code>setImmediate</code></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Предпочтите асинхронное API</h2>
+		<ul>
+			<li>readFile или <strike>readFileSync</strike></li>
+			<li>writeFile или <strike>writeFileSync</strike></li>
+			<li>etc&hellip;</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Аккуратно с callback'ами</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Аккуратно с callback'ами</h2>
+		<pre><code>function doSmthAsync(cb) {
+	// some work
+	if (isSuccessful()) {
+		cb(null, result);
+	}
+	cb('Error'); <mark class="important">// Позвали второй раз!</mark>
+});</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Аккуратно с callback'ами</h2>
+		<pre><code>try {
+	doSmthAsync(payload, function(err, res) {
+		// ...
+	});
+} catch(e) {
+	<mark class="important">// Вряд ли сюда когда-то попадем...</mark>
+}</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Аккуратно с callback'ами</h2>
+		<pre><code>function doSmthAsync(payload, cb) {
+	// ...
+	throw 'Processing error'; <mark class="important">// не попадет в try/catch</mark>
+}</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Аккуратно с callback'ами</h2>
+		<pre><code>function doSmthAsync(payload, cb) {
+	// ...
+	cb(new Error('Processing error')); <mark>// Так правильно</mark>
+}</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Используйте потоковую обработку!</h2>
+		<p>Задача: получить данные и сложить их на диск сжатыми</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Используйте потоковую обработку!</h2>
+		<pre><code>.on('request', function(req, res) {
+	// 1. получим все данные в переменную
+	// 2. отправим их в Zlib
+	// 3. дождемся обработки
+	// 4. результат запишем в файл
+	// 5. когда запишет - res.end()
+});</code></pre>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Плохо!</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Используйте потоковую обработку!</h2>
+		<pre><code>.on('request', function(req, res) {
+	req
+	   .pipe(zlib.createGzip())
+	   .pipe(fs.createWriteStream('file.gz'))
+	   .on('end', res.end.bind(res));
+});</code></pre>
+	</div></section>
+
+	<!-- Enterprise ready -->
+
+	<!-- io.js phenomenon -->
+
+	<section class="slide">
+		<div>
+			<h2>Спасибо за внимание!</h2>
+			<img class="qr" src="http://qrcoder.ru/code/?http%3A%2F%2Fbit.ly%2Fmodern-web-platform&6&0" />
+			<p>Доп. материалы:<br /><a href="http://bit.ly/modern-web-platform">http://bit.ly/modern-web-platform</a><br />Вопросы?</p>
+			<p class="about">
+				Горячий код<br />
+				Елифантьев Олег, Тензор<br />
+				<a href="https://twitter.com/oelifantiev">@oelifantiev</a>
+			</p>
+		</div>
+	</section>
+
+	<p class="badge"><a href="https://github.com/Olegas/talks-improve-rendering-speed">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="../shower-core/shower.min.js"></script>
+</body>
+</html>
