@@ -83,22 +83,25 @@
 			flex-direction: row;
 			justify-content: space-between;
 		}
-		.video {
-			width: 320px;
-			height: 240px;
-			position: absolute;
-			display: none;
+		#eventloop {
+			width: 100%;
+			height: 200px;
+			border: 1px solid black;
+			box-sizing: border-box;
 		}
-		.full .video {
-			display: block;
-		}
-		video#local {
-			left: 10px;
-			top: 10px;
-		}
-		video#remote {
-			right: 10px;
-			bottom: 10px;
+
+		#eventloop .item {
+			margin: 5px;
+			height: 190px;
+			min-width: 50px;
+			box-sizing: border-box;
+			border: 1px solid red;
+			float: left;
+			padding: 10px;
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			justify-content: center;
 		}
 	</style>
 </head>
@@ -277,9 +280,53 @@
 		<img src="/images/architecture.png" width="100%" />
 	</div></section>
 
-	<!-- КОЛБЭКИ В JS на птичках и рыбках. -->
+	<section class="slide shout"><div>
+		<h2>Асинхронность в JS</h2>
+	</div></section>
 
-	<!-- EventLoop. Какая-то крутая демка... -->
+	<section class="slide"><div>
+		<h2>Асинхронность&hellip;</h2>
+		<pre><code>asyncAction(payload, function(err, res){
+	if (err) {
+		// handle error
+	} else {
+		// handle result
+	}
+});</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Callback</h2>
+		<pre><code>asyncAction(payload, <mark>function(err, res)</mark> {
+	if (err) {
+		// handle error
+	} else {
+		// handle result
+	}
+});</code></pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Event handlers</h2>
+		<pre><code>someEmitter.on('event', <mark>function(payload)</mark> {
+	// handler payload
+});</code></pre>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>EventLoop</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>EventLoop</h2>
+		<div id="eventloop">
+			<div class="item next">main</div>
+			<div class="item next">event<br />handler</div>
+			<div class="item next">event<br />handler<br />+timer<br />10ms</div>
+			<div class="item next" style="width: 200px">long<br />event<br />handler<br />100ms</div>
+			<div class="item next">timer</div>
+		</div>
+	</div></section>
 
 	<section class="slide shout"><div>
 		<h2>Что такое хорошо, а что такое плохо.</h2>
@@ -385,24 +432,65 @@
 });</code></pre>
 	</div></section>
 
-	<!-- Enterprise ready -->
+	<section class="slide"><div>
+		<h2>Enterprise?</h2>
+		<ul>
+			<li class="next">PayPal &mdash; (Node vs Java) 33% меньше кодовая база, 2х RPS, -35% response time</li>
+			<li class="next">NetFlix</li>
+			<li class="next">Ebay</li>
+			<li class="next">Yandex (auto.yandex.ru)</li>
+			<li class="next">&hellip; and counting</li>
+		</ul>
+	</div></section>
 
-	<!-- io.js phenomenon -->
+	<section class="slide shout"><div>
+		<h2>Феномен io.js</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Node</h2>
+		<p>К версии 0.10 &mdash; застой. Новые версии выходят крайне редко, используется давно устаревший V8.
+			0.11 практически не развивается.</p>
+		<p class="note">К этому времени версионирование такое:
+			0.ЧЕТНАЯ &mdash; стабильная ветка (0.8, 0.10), 0.НЕЧЕТНАЯ &mdash; нестабильная (0.7, 0.9, 0.11)</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>io.js</h2>
+		<p>Декабрь 2014 &mdash; форк node под названием io.js</p>
+		<p>Обновили зависимости в т.ч. V8, стали регулярно выпускать релизы (в т.ч. мажорные, перешли на semantic versioning):
+			io.js v1.0.0 вышел 14 января 2015</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Слияние</h2>
+		<p>С версии 4.0.0 node и io.js слились и снова развиваются вместе под управлением комьюнити.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Node Foundation</h2>
+		<p>The Node.js Foundation's mission is to enable widespread adoption and help accelerate development of Node.js&hellip;</p>
+		<ul class="next">
+			<li>Microsoft</li>
+			<li>IBM</li>
+			<li>Intel</li>
+			<li>RedHat</li>
+		</ul>
+	</div></section>
 
 	<section class="slide">
 		<div>
 			<h2>Спасибо за внимание!</h2>
-			<img class="qr" src="http://qrcoder.ru/code/?http%3A%2F%2Fbit.ly%2Fmodern-web-platform&6&0" />
-			<p>Доп. материалы:<br /><a href="http://bit.ly/modern-web-platform">http://bit.ly/modern-web-platform</a><br />Вопросы?</p>
+			<p>Вопросы?</p>
 			<p class="about">
-				Горячий код<br />
+				Kostroma Backend Meetup #0<br />
 				Елифантьев Олег, Тензор<br />
 				<a href="https://twitter.com/oelifantiev">@oelifantiev</a>
 			</p>
 		</div>
 	</section>
 
-	<p class="badge"><a href="https://github.com/Olegas/talks-improve-rendering-speed">Fork me on Github</a></p>
+	<p class="badge"><a href="https://github.com/Olegas/talks-what-is-node">Fork me on Github</a></p>
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
