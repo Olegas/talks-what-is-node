@@ -231,7 +231,7 @@
 	</div></section>
 
 	<section class="slide shout"><div>
-		<h2>Архитектура</h2>
+		<h2>Single- or multi-thread?</h2>
 	</div></section>
 
 	<section class="slide"><div>
@@ -255,30 +255,6 @@
 			</ul>
 		</div>
 	</section>
-
-	<section class="slide">
-		<div>
-			<h2>Google V8 + libuv</h2>
-			<div style="display: flex; flex-direction: row; justify-content: space-around">
-				<img src="/images/v8-logo.png" alt="Google V8" width="300px" height="300px"/>
-				<img src="/images/libuv-logo.png" alt="libuv logo" width="300px" height="300px" />
-			</div>
-		</div>
-	</section>
-
-	<section class="slide"><div>
-		<h2>Google V8</h2>
-		<ul>
-			<li class="next">Преобразует JS в код "практически в asm"</li>
-			<li class="next">JIT-компиляция</li>
-			<li class="next">Оптимизатор "Crankshaft"</li>
-		</ul>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2>libuv</h2>
-		<img src="/images/architecture.png" width="100%" />
-	</div></section>
 
 	<section class="slide shout"><div>
 		<h2>Асинхронность в JS</h2>
@@ -312,6 +288,36 @@
 	// handler payload
 });</code></pre>
 	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Архитектура</h2>
+	</div></section>
+
+	<section class="slide">
+		<div>
+			<h2>Google V8 + libuv</h2>
+			<div style="display: flex; flex-direction: row; justify-content: space-around">
+				<img src="/images/v8-logo.png" alt="Google V8" width="300px" height="300px"/>
+				<img src="/images/libuv-logo.png" alt="libuv logo" width="300px" height="300px" />
+			</div>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Google V8</h2>
+		<ul>
+			<li class="next">Преобразует JS в код "практически в asm"</li>
+			<li class="next">JIT-компиляция</li>
+			<li class="next">Оптимизатор "Crankshaft"</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>libuv</h2>
+		<img src="/images/architecture.png" width="100%" />
+	</div></section>
+
+
 
 	<section class="slide shout"><div>
 		<h2>EventLoop</h2>
