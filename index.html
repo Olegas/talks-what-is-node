@@ -373,7 +373,7 @@
 	<section class="slide"><div>
 		<h2>Аккуратно с callback'ами</h2>
 		<pre><code>function doSmthAsync(cb) {
-	// some work
+	// some async code
 	if (isSuccessful()) {
 		cb(null, result);
 	}
@@ -384,7 +384,7 @@
 	<section class="slide"><div>
 		<h2>Аккуратно с callback'ами</h2>
 		<pre><code>try {
-	doSmthAsync(payload, function(err, res) {
+	doAsync(data, function(err, res) {
 		// ...
 	});
 } catch(e) {
@@ -394,17 +394,21 @@
 
 	<section class="slide"><div>
 		<h2>Аккуратно с callback'ами</h2>
-		<pre><code>function doSmthAsync(payload, cb) {
-	// ...
-	throw 'Processing error'; <mark class="important">// не попадет в try/catch</mark>
+		<pre><code>function doAsync(data, cb) {
+	fs.writeFile('/some/path', data, function(err, res) {
+		// ...
+		throw 'Processing error'; <mark class="important">// не попадет в try/catch</mark>
+	});
 }</code></pre>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Аккуратно с callback'ами</h2>
-		<pre><code>function doSmthAsync(payload, cb) {
-	// ...
-	cb(new Error('Processing error')); <mark>// Так правильно</mark>
+		<pre><code>function doAsync(data, cb) {
+	fs.writeFile('/some/path', data, function(err, res) {
+		// ...
+		cb(new Error('Processing error')); <mark>// Так правильно</mark>
+	});
 }</code></pre>
 	</div></section>
 
